@@ -1,0 +1,71 @@
+.header {
+  background-color: var(--background);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.headerContainer {
+  max-width: 1100px;
+  margin: auto;
+  padding: 10px 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo-img {
+  height: 50px;
+  width: auto;
+}
+.nav-links {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+.nav-item {
+  text-decoration: none;
+  font-size: 16px;
+  color: var(--black);
+  letter-spacing: 0.4px;
+}
+.nav-item:hover {
+  color: var(--primary);
+}
+.nav-item-active {
+  text-decoration: none;
+  font-size: 16px;
+  letter-spacing: 0.4px;
+  transition: color 0.3s ease;
+  color: var(--primary);
+}
+
+.theme-toggle {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--text);
+  transition: transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: rotate(360deg);
+}
+.nav-item-contact {
+  text-decoration: none;
+  font-size: 16px;
+  background-color: var(--primary);
+  padding: 6px 16px;
+  border-width: 1px;
+  border-radius: 4px;
+  color: var(--white);
+  font-weight: var(--medium);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.nav-item-contact:hover {
+  background-color: var(--success);
+  transform: translateY(-2px);
+}
