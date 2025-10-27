@@ -1,71 +1,238 @@
-.header {
-  background-color: var(--background);
+.site-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 50;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-.headerContainer {
-  max-width: 1100px;
-  margin: auto;
-  padding: 10px 80px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
+  z-index: 50px;
 }
-.logo-img {
-  height: 50px;
-  width: auto;
+.gradient-bg {
+  position: absolute;
+  width: 100%;
+  height: 70px;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background: var(--color-header-bg);
 }
-.nav-links {
-  display: flex;
-  gap: 40px;
-  align-items: center;
-}
-.nav-item {
-  text-decoration: none;
-  font-size: 16px;
-  color: var(--black);
-  letter-spacing: 0.4px;
-}
-.nav-item:hover {
-  color: var(--primary);
-}
-.nav-item-active {
-  text-decoration: none;
-  font-size: 16px;
-  letter-spacing: 0.4px;
-  transition: color 0.3s ease;
-  color: var(--primary);
-}
-
-.theme-toggle {
+.nav-pill {
+  position: relative;
   background: transparent;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-  color: var(--text);
-  transition: transform 0.2s ease;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+  width: min(1180px, 92%);
+  margin-top: 10px;
+  padding: 5px 26px;
+  backdrop-filter: blur(12px);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.brand-name {
+  font-size: 18px;
+}
+.avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 19px;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+.nav-center {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.nav-link {
+  color: lightslategray;
+  position: relative;
+  transition: color 0.3s ease;
+  font-size: 16px;
+}
+.nav-link:hover {
+  color: var(--color-hover);
+}
+.nav-link.active {
+  color: var(--color-hover);
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.connect-btn {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-color: var(--color-primary);
+  border-radius: 30px;
+  padding: 10px 22px;
+  color: var(--color-text);
+  font-size: 14px;
+  transition: all 0.3s ease;
+  font-size: clamp(11px, 1.5vw, 14px);
+}
+.connect-btn:hover {
+  transform: translateY(-2px);
+  color: aliceblue;
+}
+.hamburger {
+  display: none;
 }
 
-.theme-toggle:hover {
-  transform: rotate(360deg);
+/* ✨ Slide animation */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
-.nav-item-contact {
-  text-decoration: none;
-  font-size: 16px;
-  background-color: var(--primary);
-  padding: 6px 16px;
-  border-width: 1px;
-  border-radius: 4px;
-  color: var(--white);
-  font-weight: var(--medium);
-  transition: background-color 0.3s ease, transform 0.2s ease;
+
+/* ✅ Responsive fine-tuning for specific device sizes */
+@media (max-width: 900px) {
+  .nav-center {
+    display: none;
+  }
+  /* ✅ Sidebar Menu */
+  .nav-center.open {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 40%;
+    background: rgba(0, 0, 0, 0.94);
+    backdrop-filter: blur(8px);
+    z-index: 200;
+    padding: 100px 30px 40px;
+    gap: 20px;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    animation: slideInRight 0.4s ease forwards;
+    text-align: center;
+    margin-top: -10px;
+  }
+  .nav-center.open .nav-link {
+    font-size: 18px;
+    width: 100%;
+    text-align: "center";
+    padding: 12px 0;
+    transition: color 0.3s ease, transform 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: white;
+    transform: translateX(4px);
+  }
+  .nav-link.active {
+    color: white;
+  }
+  .hamburger {
+    display: flex;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: aliceblue;
+    z-index: 500;
+  }
 }
-.nav-item-contact:hover {
-  background-color: var(--success);
-  transform: translateY(-2px);
+/* -------- iPhone 14 / 15 / 13 / 12 (390px width) -------- */
+@media (max-width: 430px) {
+  .nav-center.open {
+    width: 60%;
+    padding: 80px 20px;
+    gap: 18px;
+  }
+  .nav-center.open .nav-link {
+    font-size: 16px;
+  }
+  .connect-btn {
+    padding: 8px 10px;
+  }
+  .brand-name {
+    font-size: 16px;
+  }
+  .avatar {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+/* -------- Small Android Phones (360px width like Samsung M-series, Realme, Poco) -------- */
+@media (max-width: 380px) {
+  .nav-center.open {
+    width: 70%;
+    padding: 70px 18px;
+  }
+  .nav-link {
+    font-size: 15px;
+  }
+  .connect-btn {
+    padding: 3px;
+    font-size: 7px;
+  }
+  .brand-name {
+    font-size: 15px;
+  }
+  .avatar {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* -------- Very Small Phones (≤320px like older iPhone SE, small Androids) -------- */
+@media (max-width: 340px) {
+  .nav-pill {
+    padding: 4px 16px;
+  }
+  .brand-name {
+    font-size: 14px;
+  }
+  .connect-btn {
+    display: none;
+  }
+  .nav-center.open {
+    width: 80%;
+    padding: 60px 15px;
+  }
+  .nav-center.open .nav-link {
+    font-size: 14px;
+  }
+}
+
+/* -------- Tablets / iPad (max 768px) -------- */
+@media (max-width: 768px) {
+  .nav-center.open {
+    width: 45%;
+    padding: 90px 25px;
+  }
+  .nav-link {
+    font-size: 17px;
+  }
+  .connect-btn {
+    padding: 9px 20px;
+    font-size: 14px;
+  }
+}
+
+/* -------- Larger Tablets / Foldables (max 1024px) -------- */
+@media (max-width: 1024px) {
+  .nav-pill {
+    width: 95%;
+  }
+  .nav-center.open {
+    width: 35%;
+  }
 }

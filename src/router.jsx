@@ -7,7 +7,7 @@ import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import Technology from "./pages/Technology";
 import Notfound from "./pages/Notfound";
-import Pricing from "./pages/Pricing";
+import Pricing from "./pages/Services";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
       { path: "/about", element: <About /> },
       { path: "/contact", element: <Contact /> },
       { path: "/technology", element: <Technology /> },
-      { path: "/pricing", element: <Pricing /> },
+      { path: "/services", element: <Pricing /> },
     ],
   },
   { path: "*", element: <Notfound /> },
